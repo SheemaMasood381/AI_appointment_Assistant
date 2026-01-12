@@ -76,13 +76,19 @@ const ChatInterface = () => {
       let aiMessages = [];
       
       if (response.data) {
+        // Check for error responses
+        if (response.data.error || (response.data.code && response.data.code !== 200)) {
+          aiMessages = ['⚠️ n8n workflow error. Please make sure your workflow is activated in production mode.'];
+        }
         // Check if response is an array of messages or a single message
-        if (Array.isArray(response.data)) {
+        else if (Array.isArray(response.data)) {
           aiMessages = response.data;
         } else if (typeof response.data === 'string') {
           aiMessages = [response.data];
         } else if (response.data.messages && Array.isArray(response.data.messages)) {
           aiMessages = response.data.messages;
+        } else if (response.data.message) {
+          aiMessages = [response.data.message];
         } else {
           aiMessages = [JSON.stringify(response.data)];
         }
