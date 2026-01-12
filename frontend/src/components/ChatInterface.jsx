@@ -7,7 +7,8 @@ import { toast } from 'sonner';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 
-const N8N_WEBHOOK_URL = 'https://sheemamasood.app.n8n.cloud/webhook/91ce612a-b844-474a-9991-2bec2ec8fc9e/chat';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API_URL = `${BACKEND_URL}/api/chat`;
 const SESSION_ID = 'fixed-user-session';
 
 const ChatInterface = () => {
