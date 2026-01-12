@@ -67,6 +67,43 @@ async def get_status_checks():
     
     return status_checks
 
+# N8N Webhook Proxy
+N8N_WEBHOOK_URL = "https://sheemamasood.app.n8n.cloud/webhook/91ce612a-b844-474a-9991-2bec2ec8fc9e/chat"
+
+@api_router.post("/chat")
+async def chat_proxy(
+    chatInput: Optional[str] = Form(None),
+    audio: Optional[UploadFile] = File(None),
+    image: Optional[UploadFile] = File(None)
+):
+    """Proxy endpoint to forward chat requests to n8n webhook"""
+    try:
+        # Prepare form data
+        files = {}
+        data = {"chatInput": chatInput or ""}
+        
+        if audio:
+            audio_content = await audio.read()
+            files['audio'] = (audio.filename, audio_content, audio.content_type)
+        
+        if image:
+            image_content = await image.read()
+            files['image'] = (image.filename, image_content, image.content_type)
+        
+        # Make request to n8n webhook
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            if files:
+                response = await client.post(N8N_WEBHOOK_URL, data=data, files=files)
+            else:
+                response = await client.post(N8N_WEBHOOK_URL, data=data)
+        
+        # Return the response from n8n
+        return response.json()
+    
+    except Exception as e:
+        logger.error(f"Error proxying to n8n: {str(e)}")
+        return {"error": "Failed to process request", "details": str(e)}
+
 # Include the router in the main app
 app.include_router(api_router)
 
