@@ -66,7 +66,7 @@ const ChatInterface = () => {
         formData.append('image', imageFile);
       }
 
-      const response = await axios.post(N8N_WEBHOOK_URL, formData, {
+      const response = await axios.post(API_URL, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
