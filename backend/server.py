@@ -68,7 +68,7 @@ async def get_status_checks():
     return status_checks
 
 # N8N Webhook Proxy
-N8N_WEBHOOK_URL = "https://sheemamasood.app.n8n.cloud/webhook/91ce612a-b844-474a-9991-2bec2ec8fc9e/chat"
+N8N_WEBHOOK_URL = "https://muhammadabdullahgohar.app.n8n.cloud/webhook-chat/4a0e8e9a-c0e0-4e8e-a0e8-e9ac0e04e8e0"
 
 @api_router.post("/chat")
 async def chat_proxy(
