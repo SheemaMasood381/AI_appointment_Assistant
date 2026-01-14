@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const API_URL = `${BACKEND_URL}/api/chat`;
 const SESSION_ID = 'fixed-user-session';
 
