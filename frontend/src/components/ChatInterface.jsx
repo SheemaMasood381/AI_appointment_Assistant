@@ -7,7 +7,6 @@ import { toast } from 'sonner';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const API_URL = 'https://sheemamasood.app.n8n.cloud/webhook/appointment-booking';
 const SESSION_ID = 'fixed-user-session';
 
