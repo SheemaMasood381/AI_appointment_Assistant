@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 
-const API_URL = 'https://sheemamasood.app.n8n.cloud/webhook/multi-modal-chatbot';
+const API_URL = 'https://sheemamasood.app.n8n.cloud/webhook-test/multi-modal-chatbot';
 const SESSION_ID = 'fixed-user-session';
 
 const ChatInterface = () => {
