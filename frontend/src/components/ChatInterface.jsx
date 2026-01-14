@@ -8,10 +8,8 @@ import MessageBubble from './MessageBubble';
 import TypingIndicator from './TypingIndicator';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-const API_URL = `${BACKEND_URL}/api/chat`;
+const API_URL = 'https://sheemamasood.app.n8n.cloud/webhook/appointment-booking';
 const SESSION_ID = 'fixed-user-session';
-console.log("BACKEND_URL ===>", BACKEND_URL);
-console.log("API_URL ===>", API_URL);
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
